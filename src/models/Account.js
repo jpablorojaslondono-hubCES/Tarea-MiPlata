@@ -1,26 +1,42 @@
-// Import Account from './Account.js'
-// Default export class SavingsAccount extending Account
-// Define a static property INTEREST_RATE = 0.015
-// Create constructor(productNumber, balance) that calls super(productNumber, balance)
-// Implement withdraw(amount) method:
-// - Check if amount <= this.getBalance(). If not, throw Error "Insufficient funds"
-// - If sufficient, subtract amount from balance and call this.registerTransaction('Withdrawal', amount)
+// Import Product from './Product.js'
+// Default export class Account extending Product
+// Define private field #balance
+// Create constructor(productNumber, balance) calling super(productNumber) and initializing #balance
+// Implement getBalance() returning #balance
+// Implement setBalance(amount) setting #balance
+// Implement deposit(amount): add to #balance and call registerTransaction('Deposit', amount)
+// Implement withdraw(amount): throw Error "Method withdraw() must be implemented by subclasses"
+// Implement transfer(amount, destinationAccount): call this.withdraw(amount) and destinationAccount.deposit(amount)
 
 import Product from './Product.js';
 
 export default class Account extends Product {
-	#balance;
+  #balance;
 
-	constructor(productNumber, balance) {
-		super(productNumber);
-		this.#balance = balance;
-	}
+  constructor(productNumber, balance) {
+    super(productNumber);
+    this.#balance = balance;
+  }
 
-	getBalance() {
-		return this.#balance;
-	}
+  getBalance() {
+    return this.#balance;
+  }
+  
+  setBalance(amount) {
+    this.#balance = amount;
+  }
 
-	setBalance(balance) {
-		this.#balance = balance;
-	}
+  deposit(amount) {
+    this.#balance += amount;
+    this.registerTransaction('Deposit', amount);
+  }
+
+  withdraw(amount) {
+    throw new Error("Method withdraw() must be implemented by subclasses");
+  }
+
+  transfer(amount, destinationAccount) {
+    this.withdraw(amount);
+    destinationAccount.deposit(amount);
+  }
 }

@@ -1,13 +1,27 @@
-// Default export the Transaction class
-// Define private fields (#): dateTime (default to new Date()), transactionType, and amount
-// Create a constructor that receives transactionType and amount to initialize the fields
-export default class Transaction {
-  #dateTime = new Date();
-  #transactionType;
-  #amount;
+// Import Transaction from './Transaction.js'
+// Default export class Product
+// Define private fields: #productNumber and #history
+// Create constructor(productNumber) setting #productNumber and initializing #history as empty array
+// Implement getTransactions() returning #history
+// Implement registerTransaction(type, amount) that creates a Transaction and pushes it to #history
 
-  constructor(transactionType, amount) {
-    this.#transactionType = transactionType;
-    this.#amount = amount;
+import Transaction from './Transaction.js';
+
+export default class Product {
+  #productNumber;
+  #history;
+
+  constructor(productNumber) {
+    this.#productNumber = productNumber;
+    this.#history = [];
+  }
+
+  getTransactions() {
+    return this.#history;
+  }
+
+  registerTransaction(type, amount) {
+    const transaction = new Transaction(type, amount);
+    this.#history.push(transaction);
   }
 }

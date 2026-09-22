@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0c">
+  <title>Mi Plata | Banca digital</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="login-view" aria-labelledby="login-title">
+      <div class="brand-lockup">
+        <span class="brand-mark" aria-hidden="true">M</span>
+        <span class="brand-name">Mi Plata</span>
+        <span class="brand-tier">Gold</span>
+      </div>
+
+      <div class="login-panel glass-panel">
+        <div class="eyebrow">Banca digital privada</div>
+        <h1 id="login-title">Tu patrimonio, bajo control.</h1>
+        <p class="intro-text">Accede a una experiencia financiera clara, segura y diseñada para avanzar contigo.</p>
+
+        <form id="login-form" class="login-form">
+          <div class="field-group">
+            <label for="username">Usuario</label>
+            <input type="text" id="username" name="username" placeholder="Ingresa tu usuario" autocomplete="username" required>
+          </div>
+          <div class="field-group">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" autocomplete="current-password" required>
+          </div>
+          <div class="form-options">
+            <label class="remember-option" for="remember-me">
+              <input type="checkbox" id="remember-me" name="remember-me">
+              <span>Recordarme</span>
+            </label>
+            <button class="help-link" id="help-link" type="button" aria-haspopup="dialog">¿Necesitas ayuda?</button>
+          </div>
+          <button class="primary-button" type="submit">
+            <span>Ingresar a mi cuenta</span>
+            <span aria-hidden="true">&#8594;</span>
+          </button>
+          <p class="form-feedback" id="form-feedback" role="alert" aria-live="polite"></p>
+        </form>
+
+        <p class="security-note"><span class="status-dot" aria-hidden="true"></span> Conexión protegida y cifrada</p>
+      </div>
+
+      <p class="copyright">Mi Plata &copy; 2024. Banca simple, decisiones inteligentes.</p>
+    </section>
+
+    <section class="dashboard-view" hidden aria-labelledby="dashboard-title">
+      <header class="dashboard-header">
+        <div>
+          <div class="eyebrow">Resumen financiero</div>
+          <h2 id="dashboard-title">Buenos días, Juan.</h2>
+          <p class="dashboard-subtitle">Este es el estado actual de tus productos.</p>
+        </div>
+        <button class="icon-button" type="button" aria-label="Abrir menú">&#8942;</button>
+      </header>
+
+      <div class="balance-strip glass-panel">
+        <div>
+          <span class="balance-label">Saldo total disponible</span>
+          <strong class="total-balance">$ 6.400.000 <small>COP</small></strong>
+        </div>
+        <span class="balance-change">+8,4% este mes</span>
+      </div>
+
+      <div class="section-heading">
+        <h3>Tus productos</h3>
+        <button class="text-button" type="button">Ver todos <span aria-hidden="true">&#8594;</span></button>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card product-card--silver">
+          <div class="card-topline"><span class="product-type">Cuenta de ahorros</span><span class="card-chip" aria-hidden="true"></span></div>
+          <div class="product-balance">$ 4.820.000 <small>COP</small></div>
+          <div class="product-footer"><span>**** 0042</span><span>Disponible</span></div>
+        </article>
+        <article class="product-card product-card--graphite">
+          <div class="card-topline"><span class="product-type">Cuenta corriente</span><span class="card-chip" aria-hidden="true"></span></div>
+          <div class="product-balance">$ 1.580.000 <small>COP</small></div>
+          <div class="product-footer"><span>**** 7819</span><span>Disponible</span></div>
+        </article>
+        <article class="product-card product-card--pearl">
+          <div class="card-topline"><span class="product-type">Tarjeta de crédito</span><span class="card-chip card-chip--dark" aria-hidden="true"></span></div>
+          <div class="product-balance">$ 2.000.000 <small>cupo usado</small></div>
+          <div class="product-footer"><span>**** 3091</span><span>Pago: 15 Feb</span></div>
+        </article>
+      </div>
+    </section>
+
+    <div class="help-dialog" id="help-dialog" role="dialog" aria-modal="true" aria-labelledby="help-title" hidden>
+      <div class="help-backdrop" data-help-close></div>
+      <section class="help-panel glass-panel">
+        <div class="help-header">
+          <div>
+            <div class="eyebrow">Centro de ayuda</div>
+            <h2 id="help-title">Estamos para ayudarte.</h2>
+          </div>
+          <button class="close-button" type="button" aria-label="Cerrar ayuda" data-help-close>&times;</button>
+        </div>
+        <p class="help-intro">Resuelve tus dudas de acceso y seguridad con estas opciones rápidas.</p>
+        <div class="help-grid">
+          <details open>
+            <summary>No recuerdo mi contraseña</summary>
+            <p>Por seguridad, solicita el restablecimiento desde el canal de atención. En esta demo puedes usar el usuario <strong>juanp</strong> y la contraseña <strong>pass123</strong>.</p>
+          </details>
+          <details>
+            <summary>¿Cómo protegen mi cuenta?</summary>
+            <p>Mi Plata bloquea el acceso después de tres intentos fallidos y mantiene tus credenciales únicamente en la sesión local de esta demostración.</p>
+          </details>
+          <details>
+            <summary>Canales de atención</summary>
+            <p>Atención telefónica: <strong>01 8000 123 456</strong><br>Correo: <strong>ayuda@miplata.example</strong><br>Lunes a viernes, 8:00 a. m. - 6:00 p. m.</p>
+          </details>
+          <details>
+            <summary>¿Qué puedo consultar aquí?</summary>
+            <p>Al ingresar podrás visualizar tus cuentas de ahorros, cuenta corriente y tarjeta de crédito con sus saldos de demostración.</p>
+          </details>
+        </div>
+        <div class="help-footer">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Soporte disponible para tu próxima operación.</span>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
