@@ -7,6 +7,25 @@ Default export class CheckingAccount extending Account
  - If amount > maxLimit, throw Error "Insufficient funds including overdraft"
  - Otherwise, decrease the balance by amount and call this.registerTransaction('Withdrawal', amount) 
  */
+import Account from './Account.js';
 
+export default class CheckingAccount extends Account {
+  static OVERDRAFT_PCT = 0.20;
+
+  constructor(productNumber, balance) {
+    super(productNumber, balance);
+  }
+
+  withdraw(amount) {
+    const maxLimit = this.getBalance() + (this.getBalance() * CheckingAccount.OVERDRAFT_PCT);
+    
+    if (amount > maxLimit) {
+      throw new Error("Insufficient funds including overdraft");
+    }
+    
+    this.setBalance(this.getBalance() - amount);
+    this.registerTransaction('Withdrawal', amount);
+  }
+}
 
 
