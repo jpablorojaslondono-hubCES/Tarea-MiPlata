@@ -1,134 +1,212 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0a0a0c">
-  <title>Mi Plata | Banca digital</title>
-  <link rel="stylesheet" href="./styles.css">
+  <meta name="description" content="MiPlata Gold: un portal bancario demostrativo para explorar productos, simular créditos y probar operaciones ficticias.">
+  <meta name="theme-color" content="#14171C">
+  <title>MiPlata Gold | Tu plata, en su mejor versión</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='18' fill='%23FFD21F'/%3E%3Ctext x='20' y='27' text-anchor='middle' font-family='sans-serif' font-size='22' font-weight='bold' fill='%2314171C'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="app-shell">
-    <section class="login-view" aria-labelledby="login-title">
-      <div class="brand-lockup">
-        <span class="brand-mark" aria-hidden="true">M</span>
-        <span class="brand-name">Mi Plata</span>
-        <span class="brand-tier">Gold</span>
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+  <div class="topbar">
+    <div class="container topbar-content">
+      <div class="segments" aria-label="Segmentos">
+        <a class="active" href="#main-content">Personas</a>
+        <a href="#footer">Negocios</a>
+        <a href="#footer">Empresas</a>
+        <a href="#footer">Gold360</a>
       </div>
+      <a class="topbar-help" href="#help">Atención al consumidor</a>
+    </div>
+  </div>
 
-      <div class="login-panel glass-panel">
-        <div class="eyebrow">Banca digital privada</div>
-        <h1 id="login-title">Tu patrimonio, bajo control.</h1>
-        <p class="intro-text">Accede a una experiencia financiera clara, segura y diseñada para avanzar contigo.</p>
+  <header class="main-header">
+    <div class="container header-content">
+      <a class="logo" href="#main-content" aria-label="MiPlata Gold, inicio">
+        <svg width="140" height="36" viewBox="0 0 140 36" role="img" aria-label="MiPlata Gold">
+          <circle cx="18" cy="18" r="16" fill="url(#gold-grad)"/>
+          <path d="M11 24V12L18 19L25 12V24" stroke="#14171C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="40" y="24" fill="#14171C" font-family="Manrope, sans-serif" font-weight="800" font-size="18">MiPlata <tspan fill="#E8A900">Gold</tspan></text>
+          <defs><linearGradient id="gold-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#FFE55C"/><stop offset=".5" stop-color="#FFD21F"/><stop offset="1" stop-color="#E8A900"/></linearGradient></defs>
+        </svg>
+      </a>
+      <button id="mobile-menu-toggle" class="icon-button menu-toggle" type="button" aria-label="Abrir menú" aria-controls="primary-nav" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav id="primary-nav" class="nav-links" aria-label="Navegación principal">
+        <a href="#main-content">Inicio</a>
+        <a href="#needs">Necesidades</a>
+        <a href="#products">Productos</a>
+        <a href="#simulador">Simulador</a>
+        <a href="#help">Ayuda</a>
+      </nav>
+      <div class="header-actions">
+        <button id="open-login-btn" class="btn btn-primary" type="button">Sucursal Virtual</button>
+      </div>
+    </div>
+  </header>
 
-        <form id="login-form" class="login-form">
-          <div class="field-group">
-            <label for="username">Usuario</label>
-            <input type="text" id="username" name="username" placeholder="Ingresa tu usuario" autocomplete="username" required>
+  <main id="main-content">
+    <div id="public-content">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero-content">
+          <span class="badge-gold">Portal bancario digital · Demo</span>
+          <h1 id="hero-title">Tu plata, en su <span class="gold-text">mejor versión</span></h1>
+          <p>Abre tu Cuenta Gold en minutos, 100% digital y disfruta de transferencias a costo $0.</p>
+          <div class="hero-btns">
+            <button id="open-register-btn" class="btn btn-primary" type="button">Abrir cuenta digital</button>
+            <a class="btn btn-secondary" href="#products">Conocer productos</a>
           </div>
-          <div class="field-group">
-            <label for="password">Contraseña</label>
-            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" autocomplete="current-password" required>
+          <div class="hero-proof"><span class="proof-mark">M</span><span>Un entorno ficticio para probar productos y operaciones sin dinero real.</span></div>
+        </div>
+        <div class="hero-orbit" aria-hidden="true"><div class="hero-coin">M</div><div class="hero-card-shape"></div></div>
+      </section>
+
+      <section class="container quick-access" aria-label="Accesos rápidos">
+        <div class="quick-grid">
+          <a class="quick-card" href="#dashboard-info" data-dashboard-target="dashboard-info"><i aria-hidden="true">▤</i><span>Consultar saldo</span></a>
+          <a class="quick-card" href="#transfer-form" data-dashboard-target="transfer-form"><i aria-hidden="true">⇄</i><span>Transferir</span></a>
+          <a class="quick-card" href="#products"><i aria-hidden="true">▣</i><span>Pagar servicios</span></a>
+          <a class="quick-card" href="#simulador"><i aria-hidden="true">＋</i><span>Recargas</span></a>
+          <a class="quick-card" href="#products"><i aria-hidden="true">↗</i><span>Pagos en línea</span></a>
+          <a class="quick-card" href="#help"><i aria-hidden="true">⌖</i><span>Cajeros y oficinas</span></a>
+          <a class="quick-card" href="#products"><i aria-hidden="true">◇</i><span>Solicitar productos</span></a>
+          <a class="quick-card" href="#security"><i aria-hidden="true">◈</i><span>Seguridad</span></a>
+        </div>
+      </section>
+
+      <section id="needs" class="section container">
+        <div class="section-heading"><span class="eyebrow">Soluciones para ti</span><h2>¿Qué necesitas hoy?</h2></div>
+        <div class="needs-grid">
+          <a class="need-item" href="#products"><span class="need-icon">⌂</span><h3>Vivienda</h3><p>Opciones para dar el siguiente paso.</p></a>
+          <a class="need-item" href="#products"><span class="need-icon">◉</span><h3>Movilidad</h3><p>Financia tus nuevos caminos.</p></a>
+          <a class="need-item" href="#products"><span class="need-icon">⇄</span><h3>Soluciones de pago</h3><p>Organiza tus pagos cotidianos.</p></a>
+          <a class="need-item" href="#help"><span class="need-icon">▤</span><h3>Documentos</h3><p>Encuentra certificados y ayuda.</p></a>
+          <a class="need-item" href="#products"><span class="need-icon">◌</span><h3>Ahorro e inversión</h3><p>Haz crecer tus metas a tu ritmo.</p></a>
+          <a class="need-item" href="#products"><span class="need-icon">↗</span><h3>Emprender y crecer</h3><p>Herramientas para tus proyectos.</p></a>
+        </div>
+      </section>
+
+      <section id="products" class="section section-soft">
+        <div class="container">
+          <div class="section-heading"><span class="eyebrow">MiPlata Gold</span><h2>Productos para ti</h2><p>Valores y beneficios de ejemplo para este entorno demostrativo.</p></div>
+          <div class="products-grid-public">
+            <article class="card card-product"><span class="card-tag">Ahorro</span><h3>Cuenta Gold Ahorro</h3><p class="price">Desde $0 al mes</p><ul><li>Transferencias de ejemplo</li><li>Interés de referencia: 1,5% mensual</li><li>Movimientos visibles en tu panel</li></ul><button class="btn btn-secondary full-width product-cta" type="button">Abrir cuenta digital</button></article>
+            <article class="card card-product card-featured"><span class="card-tag gold">Popular</span><h3>Tarjeta Gold Elite</h3><p class="price">Cupo de ejemplo: $5.000.000</p><ul><li>Compras simuladas a cuotas</li><li>Cuota mensual calculada al instante</li><li>Historial de compras de ejemplo</li></ul><button class="btn btn-primary full-width product-cta" type="button">Solicitar tarjeta</button></article>
+            <article class="card card-product"><span class="card-tag">Crédito</span><h3>Crédito Libre Inversión</h3><p class="price">Tasa de ejemplo: 24% E.A.</p><ul><li>Simula distintos montos</li><li>Plazos de 6 a 84 meses</li><li>Sin solicitud real</li></ul><a class="btn btn-secondary full-width" href="#simulador">Simular crédito</a></article>
           </div>
-          <div class="form-options">
-            <label class="remember-option" for="remember-me">
-              <input type="checkbox" id="remember-me" name="remember-me">
-              <span>Recordarme</span>
-            </label>
-            <button class="help-link" id="help-link" type="button" aria-haspopup="dialog">¿Necesitas ayuda?</button>
+        </div>
+      </section>
+
+      <section id="simulador" class="section container">
+        <div class="simulator-layout">
+          <div class="simulator-info"><span class="eyebrow">Planea tu próximo paso</span><h2>Simula tu crédito</h2><p>Calcula una cuota estimada con tasa de ejemplo del 24% E.A. Esta simulación no es una oferta financiera.</p><div class="simulator-note">Tasa mensual equivalente calculada a partir de la tasa efectiva anual.</div></div>
+          <div class="card simulator-card">
+            <div class="input-group"><label for="credit-amount">Monto <strong id="amount-val"></strong></label><input type="range" id="credit-amount" min="1000000" max="200000000" step="500000" value="10000000"></div>
+            <div class="input-group"><label for="credit-term">Plazo <strong><span id="term-val"></span> meses</strong></label><input type="range" id="credit-term" min="6" max="84" step="1" value="36"></div>
+            <div class="simulator-result"><p>Cuota mensual estimada</p><h3 id="monthly-fee"></h3><div class="simulator-totals"><span>Total a pagar <strong id="total-payment"></strong></span><span>Intereses <strong id="total-interest"></strong></span></div></div>
+            <button class="btn btn-primary full-width" type="button" id="open-register-simulator">Solicitar este crédito</button>
           </div>
-          <button class="primary-button" type="submit">
-            <span>Ingresar a mi cuenta</span>
-            <span aria-hidden="true">&#8594;</span>
-          </button>
-          <p class="form-feedback" id="form-feedback" role="alert" aria-live="polite"></p>
-        </form>
-
-        <p class="security-note"><span class="status-dot" aria-hidden="true"></span> Conexión protegida y cifrada</p>
-      </div>
-
-      <p class="copyright">Mi Plata &copy; 2024. Banca simple, decisiones inteligentes.</p>
-    </section>
-
-    <section class="dashboard-view" hidden aria-labelledby="dashboard-title">
-      <header class="dashboard-header">
-        <div>
-          <div class="eyebrow">Resumen financiero</div>
-          <h2 id="dashboard-title">Buenos días, Juan.</h2>
-          <p class="dashboard-subtitle">Este es el estado actual de tus productos.</p>
         </div>
-        <button class="icon-button" type="button" aria-label="Abrir menú">&#8942;</button>
-      </header>
+      </section>
 
-      <div class="balance-strip glass-panel">
-        <div>
-          <span class="balance-label">Saldo total disponible</span>
-          <strong class="total-balance">$ 6.400.000 <small>COP</small></strong>
-        </div>
-        <span class="balance-change">+8,4% este mes</span>
-      </div>
+      <section id="app-info" class="section dark-band">
+        <div class="container split-band"><div><span class="eyebrow">Tu plata a la mano</span><h2>Una experiencia clara, estés donde estés</h2><p>Consulta productos y prueba las operaciones desde un panel demostrativo, adaptable a tu pantalla.</p><button class="btn btn-primary" type="button" data-open-auth="register">Crear cuenta de demostración</button></div><div class="phone-mock" aria-hidden="true"><div class="phone-top"></div><span>MiPlata Gold</span><strong>$ 2.500.000</strong><div class="phone-lines"><i></i><i></i><i></i></div></div></div>
+      </section>
 
-      <div class="section-heading">
-        <h3>Tus productos</h3>
-        <button class="text-button" type="button">Ver todos <span aria-hidden="true">&#8594;</span></button>
-      </div>
+      <section id="security" class="section container">
+        <div class="section-heading"><span class="eyebrow">Navega con cuidado</span><h2>Tu seguridad es lo primero</h2></div>
+        <div class="security-grid"><article><span>01</span><h3>Nunca compartas tu clave</h3><p>Este demo no necesita datos reales de acceso.</p></article><article><span>02</span><h3>Verifica los canales</h3><p>Usa únicamente los enlaces que reconoces.</p></article><article><span>03</span><h3>Desconfía de la urgencia</h3><p>No entregues información por presión.</p></article><article><span>04</span><h3>Reporta a tiempo</h3><p>Busca ayuda desde canales oficiales.</p></article></div>
+      </section>
 
-      <div class="product-grid">
-        <article class="product-card product-card--silver">
-          <div class="card-topline"><span class="product-type">Cuenta de ahorros</span><span class="card-chip" aria-hidden="true"></span></div>
-          <div class="product-balance">$ 4.820.000 <small>COP</small></div>
-          <div class="product-footer"><span>**** 0042</span><span>Disponible</span></div>
-        </article>
-        <article class="product-card product-card--graphite">
-          <div class="card-topline"><span class="product-type">Cuenta corriente</span><span class="card-chip" aria-hidden="true"></span></div>
-          <div class="product-balance">$ 1.580.000 <small>COP</small></div>
-          <div class="product-footer"><span>**** 7819</span><span>Disponible</span></div>
-        </article>
-        <article class="product-card product-card--pearl">
-          <div class="card-topline"><span class="product-type">Tarjeta de crédito</span><span class="card-chip card-chip--dark" aria-hidden="true"></span></div>
-          <div class="product-balance">$ 2.000.000 <small>cupo usado</small></div>
-          <div class="product-footer"><span>**** 3091</span><span>Pago: 15 Feb</span></div>
-        </article>
-      </div>
-    </section>
+      <section class="section section-soft">
+        <div class="container international-band"><div><span class="eyebrow">Conectados contigo</span><h2>Colombianos en el exterior</h2><p>Conoce opciones de ejemplo para administrar tu plata desde otros lugares.</p></div><a class="btn btn-secondary" href="#help">Conoce las opciones</a></div>
+      </section>
 
-    <div class="help-dialog" id="help-dialog" role="dialog" aria-modal="true" aria-labelledby="help-title" hidden>
-      <div class="help-backdrop" data-help-close></div>
-      <section class="help-panel glass-panel">
-        <div class="help-header">
-          <div>
-            <div class="eyebrow">Centro de ayuda</div>
-            <h2 id="help-title">Estamos para ayudarte.</h2>
+      <section id="blog" class="section container">
+        <div class="section-heading"><span class="eyebrow">Aprende con MiPlata</span><h2>Ideas para tus finanzas</h2></div>
+        <div class="blog-grid"><article><span class="blog-art art-one" aria-hidden="true"></span><p class="eyebrow">Ahorro · 01 oct 2026</p><h3>5 hábitos para ahorrar sin sentirlo</h3><a href="#help">Leer artículo</a></article><article><span class="blog-art art-two" aria-hidden="true"></span><p class="eyebrow">Inversión · 01 oct 2026</p><h3>Cómo funciona un CDT</h3><a href="#help">Leer artículo</a></article><article><span class="blog-art art-three" aria-hidden="true"></span><p class="eyebrow">Crédito · 01 oct 2026</p><h3>Guía para tu primer crédito</h3><a href="#simulador">Leer artículo</a></article></div>
+      </section>
+
+      <section id="help" class="section section-soft">
+        <div class="container faq-section">
+          <div class="section-heading"><span class="eyebrow">Estamos para ayudarte</span><h2>Preguntas frecuentes</h2></div>
+          <div class="accordion-list">
+            <article class="accordion-item"><h3><button class="accordion-btn" aria-expanded="false" aria-controls="faq-1">¿Cómo abrir una Cuenta Gold?<span aria-hidden="true">+</span></button></h3><div id="faq-1" class="accordion-content" hidden><p>Usa el botón “Abrir cuenta digital” y completa el formulario de demostración. No ingreses datos reales.</p></div></article>
+            <article class="accordion-item"><h3><button class="accordion-btn" aria-expanded="false" aria-controls="faq-2">¿Qué hago si olvido mi clave?<span aria-hidden="true">+</span></button></h3><div id="faq-2" class="accordion-content" hidden><p>Este entorno no recupera claves. Los datos demo persisten en este navegador; usa “Borrar datos guardados” para eliminarlos.</p></div></article>
+            <article class="accordion-item"><h3><button class="accordion-btn" aria-expanded="false" aria-controls="faq-3">¿Cuáles son los límites de transferencia?<span aria-hidden="true">+</span></button></h3><div id="faq-3" class="accordion-content" hidden><p>Las transferencias simuladas deben ser positivas y no pueden superar los fondos disponibles según el producto.</p></div></article>
+            <article class="accordion-item"><h3><button class="accordion-btn" aria-expanded="false" aria-controls="faq-4">¿Cómo bloquear una tarjeta?<span aria-hidden="true">+</span></button></h3><div id="faq-4" class="accordion-content" hidden><p>Las tarjetas de este demo no se conectan a redes de pago ni permiten transacciones reales.</p></div></article>
+            <article class="accordion-item"><h3><button class="accordion-btn" aria-expanded="false" aria-controls="faq-5">¿Cuáles son los horarios de atención?<span aria-hidden="true">+</span></button></h3><div id="faq-5" class="accordion-content" hidden><p>Este sitio es una demostración y no presta servicio de atención bancaria.</p></div></article>
+            <article class="accordion-item"><h3><button class="accordion-btn" aria-expanded="false" aria-controls="faq-6">¿Cómo reportar un fraude?<span aria-hidden="true">+</span></button></h3><div id="faq-6" class="accordion-content" hidden><p>No compartas claves ni datos financieros en sitios de demostración. Contacta a tu entidad real por sus canales verificados.</p></div></article>
           </div>
-          <button class="close-button" type="button" aria-label="Cerrar ayuda" data-help-close>&times;</button>
-        </div>
-        <p class="help-intro">Resuelve tus dudas de acceso y seguridad con estas opciones rápidas.</p>
-        <div class="help-grid">
-          <details open>
-            <summary>No recuerdo mi contraseña</summary>
-            <p>Por seguridad, solicita el restablecimiento desde el canal de atención. En esta demo puedes usar el usuario <strong>juanp</strong> y la contraseña <strong>pass123</strong>.</p>
-          </details>
-          <details>
-            <summary>¿Cómo protegen mi cuenta?</summary>
-            <p>Mi Plata bloquea el acceso después de tres intentos fallidos y mantiene tus credenciales únicamente en la sesión local de esta demostración.</p>
-          </details>
-          <details>
-            <summary>Canales de atención</summary>
-            <p>Atención telefónica: <strong>01 8000 123 456</strong><br>Correo: <strong>ayuda@miplata.example</strong><br>Lunes a viernes, 8:00 a. m. - 6:00 p. m.</p>
-          </details>
-          <details>
-            <summary>¿Qué puedo consultar aquí?</summary>
-            <p>Al ingresar podrás visualizar tus cuentas de ahorros, cuenta corriente y tarjeta de crédito con sus saldos de demostración.</p>
-          </details>
-        </div>
-        <div class="help-footer">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span>Soporte disponible para tu próxima operación.</span>
         </div>
       </section>
     </div>
+
+    <section id="dashboard" class="dashboard-section container" hidden aria-labelledby="welcome-message">
+      <header class="dashboard-header"><div><span id="dashboard-role-label" class="eyebrow">Sucursal Virtual · Demo</span><h1 id="welcome-message" tabindex="-1">Hola</h1><p id="dashboard-description" class="text-muted">Información guardada en este navegador. Usa datos ficticios.</p></div><div class="dashboard-header-actions"><button id="logout-btn" class="btn btn-secondary" type="button">Cerrar sesión</button><button id="reset-demo-btn" class="btn btn-danger" type="button">Borrar datos guardados</button></div></header>
+      <section id="admin-dashboard" hidden>
+        <div class="admin-stats">
+          <article><span>Clientes</span><strong id="admin-customer-count">0</strong></article>
+          <article><span>Productos</span><strong id="admin-product-count">0</strong></article>
+          <article><span>Saldo total</span><strong id="admin-total-balance">$0</strong></article>
+          <article><span>Compras con tarjeta</span><strong id="admin-card-debt">$0</strong></article>
+        </div>
+        <section class="dashboard-block"><h2>Información de clientes y productos</h2><div class="table-wrap"><table><thead><tr><th>Cliente</th><th>Usuario</th><th>Rol</th><th>Estado de acceso</th><th>Identificación</th><th>Celular</th><th>Productos</th><th>Saldos y deuda</th><th>Permisos</th></tr></thead><tbody id="admin-customers-body"></tbody></table></div></section>
+        <section class="dashboard-block"><h2>Actividad reciente de todo el banco</h2><div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Cliente</th><th>Movimiento</th><th>Producto</th><th>Valor</th></tr></thead><tbody id="admin-movements-body"></tbody></table></div></section>
+        <section class="dashboard-block"><h2>Roles y permisos</h2><p class="text-muted">Los clientes nuevos tienen acceso a sus propios productos. Asigna permisos solo cuando corresponda.</p><form id="access-form" class="access-form"><div class="input-group"><label for="access-customer">Cliente</label><select id="access-customer" required></select></div><div class="input-group"><label for="access-role">Rol</label><select id="access-role"><option value="customer">Cliente</option><option value="admin" selected>Administrador</option></select></div><fieldset class="permission-list"><legend>Permisos de cliente</legend><label><input type="checkbox" value="view-own" checked disabled> Ver sus productos</label><label><input type="checkbox" value="deposit" checked> Consignar</label><label><input type="checkbox" value="withdraw" checked> Retirar</label><label><input type="checkbox" value="transfer" checked> Transferir</label><label><input type="checkbox" value="card-purchase" checked> Comprar con tarjeta</label></fieldset><button class="btn btn-primary" type="submit">Guardar rol y permisos</button></form></section>
+        <section class="dashboard-block"><h2>Administrar usuarios</h2><div class="admin-user-actions"><button id="add-customer-btn" class="btn btn-primary" type="button">Agregar cliente</button><button id="add-admin-btn" class="btn btn-secondary" type="button">Crear administrador</button></div><form id="customer-edit-form" class="customer-edit-grid"><div class="input-group"><label for="managed-customer">Cliente</label><select id="managed-customer" required></select></div><div class="input-group"><label for="managed-identification">Identificación</label><input id="managed-identification" required></div><div class="input-group"><label for="managed-name">Nombre</label><input id="managed-name" required></div><div class="input-group"><label for="managed-phone">Celular</label><input id="managed-phone" required></div><div class="input-group"><label for="managed-username">Nombre de usuario</label><input id="managed-username" required></div><div class="customer-actions"><button class="btn btn-secondary" type="submit">Guardar cambios</button><button id="delete-customer-btn" class="btn btn-danger" type="button">Eliminar cliente</button></div></form></section>
+      </section>
+      <div id="customer-dashboard">
+      <section id="dashboard-info" class="dashboard-block"><h2>Tus productos</h2><div id="products-grid" class="products-grid-dashboard"></div></section>
+      <div class="dashboard-columns">
+        <section class="dashboard-block"><h2>Consignar o retirar</h2><div class="form-stack"><div class="input-group"><label for="account-select">Cuenta</label><select id="account-select" required></select></div><form id="deposit-form" class="inline-operation"><label for="deposit-amount">Monto a consignar</label><div><input id="deposit-amount" type="number" min="1" step="any" required placeholder="Ej. 50000"><button class="btn btn-primary" type="submit">Consignar</button></div></form><form id="withdraw-form" class="inline-operation"><label for="withdraw-amount">Monto a retirar</label><div><input id="withdraw-amount" type="number" min="1" step="any" required placeholder="Ej. 50000"><button class="btn btn-secondary" type="submit">Retirar</button></div></form></div></section>
+        <section class="dashboard-block"><h2>Transferir</h2><form id="transfer-form" class="form-stack"><div class="input-group"><label for="transfer-source">Cuenta de origen</label><select id="transfer-source" required></select></div><div class="input-group"><label for="transfer-destination">Cuenta destino</label><select id="transfer-destination" required></select></div><div class="input-group"><label for="transfer-amount">Monto</label><input id="transfer-amount" type="number" min="1" step="any" required placeholder="Ej. 50000"></div><button class="btn btn-primary" type="submit">Confirmar transferencia</button></form></section>
+      </div>
+      <div class="dashboard-columns">
+        <section class="dashboard-block"><h2>Compra con tarjeta</h2><form id="card-purchase-form" class="form-stack"><div class="input-group"><label for="credit-card-select">Tarjeta</label><select id="credit-card-select" required></select></div><div class="input-group"><label for="purchase-amount">Valor de compra</label><input id="purchase-amount" type="number" min="1" step="any" required placeholder="Ej. 100000"></div><div class="input-group"><label for="installments">Número de cuotas</label><select id="installments"><option value="1">1 cuota · 0%</option><option value="2">2 cuotas · 0%</option><option value="3">3 cuotas · 1,9% mensual</option><option value="6">6 cuotas · 1,9% mensual</option><option value="12">12 cuotas · 2,3% mensual</option></select></div><p id="purchase-result" class="form-feedback" aria-live="polite"></p><button class="btn btn-primary" type="submit">Registrar compra de ejemplo</button></form></section>
+        <section class="dashboard-block"><h2>Tu perfil</h2><form id="profile-form" class="form-stack"><div class="input-group"><label for="profile-identification">Identificación</label><input id="profile-identification" required></div><div class="input-group"><label for="profile-name">Nombre completo</label><input id="profile-name" required></div><div class="input-group"><label for="profile-phone">Celular</label><input id="profile-phone" type="tel" required></div><div class="input-group"><label for="profile-username">Nombre de usuario</label><input id="profile-username" autocomplete="username" required></div><button class="btn btn-secondary" type="submit">Guardar perfil</button></form><form id="password-form" class="form-stack password-form"><h3>Cambiar clave</h3><div class="input-group"><label for="password-username">Nombre de usuario</label><input id="password-username" autocomplete="username" required></div><div class="input-group"><label for="current-password">Clave actual</label><input id="current-password" type="password" autocomplete="current-password" required></div><div class="input-group"><label for="new-password">Nueva clave</label><input id="new-password" type="password" autocomplete="new-password" minlength="6" required></div><div class="input-group"><label for="confirm-new-password">Confirmar nueva clave</label><input id="confirm-new-password" type="password" autocomplete="new-password" minlength="6" required></div><button class="btn btn-secondary" type="submit">Actualizar clave</button></form></section>
+      </div>
+      <section class="dashboard-block"><h2>Movimientos recientes</h2><div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Movimiento</th><th>Producto</th><th>Valor</th></tr></thead><tbody id="movements-body"></tbody></table></div></section>
+      </div>
+    </section>
   </main>
 
-  <script type="module" src="./src/app.js"></script>
+  <footer id="footer" class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand"><a class="footer-logo" href="#main-content">MiPlata <span>Gold</span></a><p>Banco digital ficticio. Este portal no representa una entidad financiera real.</p></div>
+      <div><h2>Personas</h2><a href="#products">Cuentas</a><a href="#products">Tarjetas</a><a href="#products">Créditos</a></div>
+      <div><h2>Negocios</h2><a href="#needs">Soluciones</a><a href="#products">Productos</a></div>
+      <div><h2>Ayuda</h2><a href="#help">Preguntas frecuentes</a><a href="#security">Seguridad</a><a href="#blog">Educación financiera</a></div>
+      <div><h2>Legal</h2><a href="#footer">Privacidad de la demo</a><a href="#footer">Términos de ejemplo</a></div>
+    </div>
+    <div class="container footer-bottom"><span>MiPlata Gold S.A. · Sitio demostrativo ficticio. No ingreses credenciales reales.</span><span>© 2026 MiPlata Gold</span></div>
+  </footer>
+
+  <div id="login-modal" class="modal-overlay" hidden role="presentation">
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+      <button id="close-login-btn" class="close-btn" type="button" aria-label="Cerrar ventana">&times;</button>
+      <div class="modal-header"><span class="eyebrow">Sucursal Virtual · Demo</span><h2 id="auth-title">Ingresa a tu Sucursal Virtual</h2><p>Demo sin servidor ni transacciones reales. El navegador guarda datos locales que no tienen seguridad bancaria. Usa información ficticia y nunca claves reales.</p></div>
+      <div class="auth-tabs" role="group" aria-label="Acceso"><button id="show-login" class="auth-tab" type="button" aria-pressed="true">Ingresar</button><button id="show-register" class="auth-tab" type="button" aria-pressed="false">Registrarme</button></div>
+      <button id="admin-bootstrap-btn" class="btn btn-secondary full-width admin-bootstrap-btn" type="button" hidden>Configurar administrador inicial</button>
+      <form id="login-form" class="form-stack"><div class="input-group"><label for="username">Nombre de usuario</label><input type="text" id="username" autocomplete="username" required></div><div class="input-group"><label for="password">Clave de demostración</label><input type="password" id="password" autocomplete="current-password" required></div><p id="login-attempts" class="attempt-counter" aria-live="polite"></p><button class="btn btn-primary full-width" type="submit">Ingresar (demo)</button></form>
+      <form id="registration-form" class="form-stack" hidden><p id="registration-role-note" class="form-feedback"></p><div class="input-group"><label for="register-identification">Identificación ficticia</label><input id="register-identification" autocomplete="off" required></div><div class="input-group"><label for="register-name">Nombre completo</label><input id="register-name" autocomplete="name" required></div><div class="input-group"><label for="register-phone">Celular ficticio</label><input id="register-phone" type="tel" autocomplete="off" required></div><div class="input-group"><label for="register-username">Nombre de usuario</label><input id="register-username" autocomplete="username" required></div><div class="input-group"><label for="register-password">Clave de demostración</label><input id="register-password" type="password" minlength="6" autocomplete="new-password" required></div><div class="input-group"><label for="register-confirm-password">Confirma la clave</label><input id="register-confirm-password" type="password" minlength="6" autocomplete="new-password" required></div><button id="registration-submit" class="btn btn-primary full-width" type="submit">Crear cuenta de demo</button></form>
+      <button id="reset-storage-btn" class="btn btn-secondary full-width" type="button">Borrar datos guardados</button>
+      <p id="auth-feedback" class="form-feedback" role="status" aria-live="polite"></p>
+    </section>
+  </div>
+
+  <button id="chat-assistant-btn" class="chat-trigger" type="button" aria-expanded="false" aria-controls="chat-panel">Asistente Gold</button>
+  <aside id="chat-panel" class="chat-panel" hidden aria-label="Asistente Gold">
+    <div class="chat-heading"><h2>Asistente Gold</h2><button id="close-chat-btn" type="button" aria-label="Cerrar asistente">&times;</button></div>
+    <p>¡Hola! Soy el asistente de MiPlata Gold. ¿En qué te ayudo hoy?</p>
+    <div class="chat-actions"><button type="button" data-chat-action="register">Abrir cuenta</button><button type="button" data-chat-action="products">Tarjetas</button><button type="button" data-chat-action="security">Seguridad</button><button type="button" data-chat-action="help">Hablar con una persona</button></div>
+  </aside>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script type="module" src="./src/app.js?v=admin-roles-7"></script>
 </body>
 </html>

@@ -1,31 +1,31 @@
-/* Import Account from './Account.js'
-Default export class CheckingAccount extending Account
- Define static property OVERDRAFT_PCT = 0.20
- Create constructor(productNumber, balance) calling super(productNumber, balance)
- Implement withdraw(amount) method:
- - Calculate maxLimit = this.getBalance() + (this.getBalance() * CheckingAccount.OVERDRAFT_PCT)
- - If amount > maxLimit, throw Error "Insufficient funds including overdraft"
- - Otherwise, decrease the balance by amount and call this.registerTransaction('Withdrawal', amount) 
- */
 import Account from './Account.js';
 
+/**
+ * Class representing a checking account with an overdraft limit.
+ */
 export default class CheckingAccount extends Account {
   static OVERDRAFT_PCT = 0.20;
 
-  constructor(productNumber, balance) {
-    super(productNumber, balance);
+  constructor(accountNumber, initialBalance = 0) {
+    super(accountNumber, initialBalance, { allowNegativeBalance: true });
   }
 
-  withdraw(amount) {
-    const maxLimit = this.getBalance() + (this.getBalance() * CheckingAccount.OVERDRAFT_PCT);
-    
-    if (amount > maxLimit) {
-      throw new Error("Insufficient funds including overdraft");
+  getAvailableFunds() {
+    const balance = this.getBalance();
+    return balance > 0 ? balance * (1 + CheckingAccount.OVERDRAFT_PCT) : 0;
+  }
+
+  canWithdraw(amount) {
+    return Number.isFinite(amount) && amount > 0 && amount <= this.getAvailableFunds();
+  }
+
+  withdraw(amount, transactionType = 'WITHDRAWAL') {
+    if (!Number.isFinite(amount) || amount <= 0) {
+      throw new Error("Withdrawal amount must be greater than zero.");
     }
-    
-    this.setBalance(this.getBalance() - amount);
-    this.registerTransaction('Withdrawal', amount);
+    if (!this.canWithdraw(amount)) {
+      throw new Error("Withdrawal exceeds checking balance and overdraft limit.");
+    }
+    return this.debit(amount, transactionType);
   }
 }
-
-

@@ -1,36 +1,56 @@
-// Import Product from './Product.js'
-// Default export class CreditCard extending Product
-// Define private fields #creditLimit and #currentDebt
-// Create constructor(productNumber, creditLimit) calling super(productNumber) and setting #currentDebt to 0
-// Implement makePurchase(amount, installments): throw Error if #currentDebt + amount > #creditLimit, otherwise add amount to #currentDebt and call registerTransaction('Purchase', amount)
-// Implement calculateRate(installments): return 0.021 if installments > 1, else 0
-// Implement calculateMonthlyFee(): return #currentDebt * 0.05 if #currentDebt > 0, else 0
-
 import Product from './Product.js';
 
+/**
+ * Class representing a credit card product with a credit limit.
+ */
 export default class CreditCard extends Product {
-  #creditLimit;
-  #currentDebt;
-
   constructor(productNumber, creditLimit) {
     super(productNumber);
-    this.#creditLimit = creditLimit;
-    this.#currentDebt = 0;
-  }
-
-  makePurchase(amount, installments) {
-    if (this.#currentDebt + amount > this.#creditLimit) {
-      throw new Error("Credit limit exceeded");
+    if (!Number.isFinite(creditLimit) || creditLimit <= 0) {
+      throw new Error('Credit limit must be greater than zero.');
     }
-    this.#currentDebt += amount;
-    this.registerTransaction('Purchase', amount);
+    this.creditLimit = creditLimit;
+    this.currentDebt = 0;
   }
 
   calculateRate(installments) {
-    return installments > 1 ? 0.021 : 0;
+    if (!Number.isInteger(installments) || installments < 1) {
+      throw new Error('Installments must be a positive whole number.');
+    }
+    if (installments <= 2) return 0;
+    if (installments <= 6) return 0.019;
+    return 0.023;
   }
 
-  calculateMonthlyFee() {
-    return this.#currentDebt > 0 ? (this.#currentDebt * 0.05) : 0;
+  calculateMonthlyPayment(amount, installments, rate = this.calculateRate(installments)) {
+    if (!Number.isFinite(amount) || amount <= 0) {
+      throw new Error('Purchase amount must be greater than zero.');
+    }
+    if (!Number.isInteger(installments) || installments < 1) {
+      throw new Error('Installments must be a positive whole number.');
+    }
+    if (rate === 0) return amount / installments;
+    return amount * rate / (1 - Math.pow(1 + rate, -installments));
+  }
+
+  calculateMonthlyFee(installments = 1) {
+    if (this.currentDebt === 0) return 0;
+    return this.calculateMonthlyPayment(this.currentDebt, installments);
+  }
+
+  makePurchase(amount, installments = 1) {
+    if (!Number.isFinite(amount) || amount <= 0) {
+      throw new Error("Purchase amount must be greater than zero.");
+    }
+    const rate = this.calculateRate(installments);
+    const availableCredit = this.creditLimit - this.currentDebt;
+    if (amount > availableCredit) {
+      throw new Error("Purchase exceeds available credit limit.");
+    }
+
+    this.currentDebt += amount;
+    const monthlyPayment = this.calculateMonthlyPayment(amount, installments, rate);
+    this.registerTransaction('PURCHASE', amount, { installments, rate, monthlyPayment });
+    return { amount, installments, rate, monthlyPayment, currentDebt: this.currentDebt };
   }
 }
